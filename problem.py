@@ -59,6 +59,7 @@ class Problem():
       current_room.set_problem(None)
       current_room.item = self.item
       current_room.set_description(self.end_description)
+      current_room.describe()
     else:
       print("That didn't work")
       

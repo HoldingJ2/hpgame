@@ -92,22 +92,37 @@ class Friend(Character):
       """initialises friend character with name and description"""
       super().__init__(char_name, char_description)
       self.request = None
+      self.reward_item = None
     
   
   def set_request(self,item):
       """sets character request item"""
-      self.item = item
+      self.request = item
   
   def get_request(self):
       """returns character request item"""
       return self.request
+
+  def set_reward_item(self, item):
+      """sets the reward item for character"""
+      self.reward_item = item
+
+  def get_reward_item(self):
+      """returns reward item of character"""
+      return self.reward_item
   
-  def give(self, item):
+  def give(self, item, backpack):
       """give a character an item"""
-      if item == self.item.name:
-          print(self.completed_text)
+      if item == self.request.name:
+          print("[" + self.name + " says]: " + self.completed_text)
+          backpack.remove(item)
           self.conversation = self.conversation2
+          if self.reward_item is not None:
+              backpack.append(self.reward_item.name)
+              print(self.name + " gave you a " + self.reward_item.name)
+              print("Description: " + self.reward_item.description)
       else:
           print(self.name + " doesn't want that")
+      return backpack  
       
 

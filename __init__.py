@@ -4,3 +4,4 @@ from .character import Friend, Enemy
 from .problem import Problem
 from .spells import Spell
 from .spellbook import Spellbook
+from .map import Map
